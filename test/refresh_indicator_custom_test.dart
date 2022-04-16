@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
+import 'package:custom_refresh_indicator/refresh_indicator_custom.dart';
 
 void main() {
   test('adds one to input values', () {
