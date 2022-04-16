@@ -8,9 +8,6 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_getx_template/app/core/style/app_colors.dart';
-import 'package:flutter_getx_template/app/core/widget/asset_image_view.dart';
-import 'package:flutter_svg/svg.dart';
 
 // The over-scroll distance that moves the indicator to its maximum
 // displacement, as a percentage of the scrollable's container extent.
@@ -235,11 +232,11 @@ class CustomRefreshIndicatorState extends State<CustomRefreshIndicator>
   double? _dragOffset;
 
   static final Animatable<double> _threeQuarterTween =
-  Tween<double>(begin: 0.0, end: 0.75);
+      Tween<double>(begin: 0.0, end: 0.75);
   static final Animatable<double> _kDragSizeFactorLimitTween =
-  Tween<double>(begin: 0.0, end: _kDragSizeFactorLimit);
+      Tween<double>(begin: 0.0, end: _kDragSizeFactorLimit);
   static final Animatable<double> _oneToZeroTween =
-  Tween<double>(begin: 1.0, end: 0.0);
+      Tween<double>(begin: 1.0, end: 0.0);
 
   @override
   void initState() {
@@ -300,10 +297,10 @@ class CustomRefreshIndicatorState extends State<CustomRefreshIndicator>
     // user dragging. It may be a result of ScrollController.jumpTo or ballistic scroll.
     // In this case, we don't want to trigger the refresh indicator.
     return ((notification is ScrollStartNotification &&
-        notification.dragDetails != null) ||
-        (notification is ScrollUpdateNotification &&
-            notification.dragDetails != null &&
-            widget.triggerMode == RefreshIndicatorTriggerMode.anywhere)) &&
+                notification.dragDetails != null) ||
+            (notification is ScrollUpdateNotification &&
+                notification.dragDetails != null &&
+                widget.triggerMode == RefreshIndicatorTriggerMode.anywhere)) &&
         notification.metrics.extentBefore == 0.0 &&
         _mode == null &&
         _start(notification.metrics.axisDirection);
@@ -371,7 +368,7 @@ class CustomRefreshIndicatorState extends State<CustomRefreshIndicator>
         case _RefreshIndicatorMode.refresh:
         case _RefreshIndicatorMode.snap:
         case null:
-        // do nothing
+          // do nothing
           break;
       }
     }
@@ -470,7 +467,7 @@ class CustomRefreshIndicatorState extends State<CustomRefreshIndicator>
     _mode = _RefreshIndicatorMode.snap;
     _positionController
         .animateTo(1.0 / _kDragSizeFactorLimit,
-        duration: _kIndicatorSnapDuration)
+            duration: _kIndicatorSnapDuration)
         .then<void>((void value) {
       if (mounted && _mode == _RefreshIndicatorMode.snap) {
         assert(widget.onRefresh != null);
@@ -485,7 +482,7 @@ class CustomRefreshIndicatorState extends State<CustomRefreshIndicator>
             FlutterError.reportError(FlutterErrorDetails(
               exception: FlutterError(
                 'The onRefresh callback returned null.\n'
-                    'The RefreshIndicator onRefresh callback must return a Future.',
+                'The RefreshIndicator onRefresh callback must return a Future.',
               ),
               context: ErrorDescription('when calling onRefresh'),
               library: 'material library',
